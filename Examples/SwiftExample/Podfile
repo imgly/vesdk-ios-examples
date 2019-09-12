@@ -1,0 +1,6 @@
+platform :ios, '9.0'
+
+target 'SwiftExample' do
+  use_frameworks!
+  pod 'VideoEditorSDK'
+end
