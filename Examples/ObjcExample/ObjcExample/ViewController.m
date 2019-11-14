@@ -146,15 +146,27 @@
 #pragma mark - VideoEditViewControllerDelegate
 
 - (void)videoEditViewController:(PESDKVideoEditViewController *)videoEditViewController didFinishWithVideoAtURL:(NSURL *)url {
-  [self dismissViewControllerAnimated:YES completion:nil];
+  if (videoEditViewController.navigationController != nil) {
+    [videoEditViewController.navigationController popViewControllerAnimated:YES];
+  } else {
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }
 }
 
 - (void)videoEditViewControllerDidFailToGenerateVideo:(PESDKVideoEditViewController *)videoEditViewController {
-  [self dismissViewControllerAnimated:YES completion:nil];
+  if (videoEditViewController.navigationController != nil) {
+    [videoEditViewController.navigationController popViewControllerAnimated:YES];
+  } else {
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }
 }
 
-- (void)videoEditViewControllerDidCancel:(PESDKVideoEditViewController *)videoEditviewController {
-  [self dismissViewControllerAnimated:YES completion:nil];
+- (void)videoEditViewControllerDidCancel:(PESDKVideoEditViewController *)videoEditViewController {
+  if (videoEditViewController.navigationController != nil) {
+    [videoEditViewController.navigationController popViewControllerAnimated:YES];
+  } else {
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }
 }
 
 @end
