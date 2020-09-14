@@ -46,10 +46,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.row == 0) {
-    [self presentCameraViewController];
-  } else if (indexPath.row == 1) {
     [self presentVideoEditViewController];
-  } else if (indexPath.row == 2) {
+  } else if (indexPath.row == 1) {
     theme = PESDKTheme.light;
     [self presentVideoEditViewController];
     if (@available(iOS 13.0, *)) {
@@ -57,7 +55,7 @@
     } else {
       theme = PESDKTheme.dark;
     }
-  } else if (indexPath.row == 3) {
+  } else if (indexPath.row == 2) {
     theme = PESDKTheme.dark;
     [self presentVideoEditViewController];
     if (@available(iOS 13.0, *)) {
@@ -65,8 +63,10 @@
     } else {
       theme = PESDKTheme.dark;
     }
-  } else if (indexPath.row == 4) {
+  } else if (indexPath.row == 3) {
     [self pushVideoEditViewController];
+  } else if (indexPath.row == 4) {
+    [self presentCameraViewController];
   }
 }
 
@@ -135,29 +135,6 @@
 
 #pragma mark - Presentation
 
-- (void)presentCameraViewController {
-  PESDKConfiguration *configuration = [self buildConfiguration];
-  PESDKCameraViewController *cameraViewController = [[PESDKCameraViewController alloc] initWithConfiguration:configuration];
-  cameraViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-  cameraViewController.locationAccessRequestClosure = ^(CLLocationManager * _Nonnull locationManager) {
-    [locationManager requestWhenInUseAuthorization];
-  };
-
-  __weak PESDKCameraViewController *weakCameraViewController = cameraViewController;
-  cameraViewController.cancelBlock = ^{
-    [self dismissViewControllerAnimated:YES completion:nil];
-  };
-  cameraViewController.completionBlock = ^(UIImage * _Nullable image, NSURL * _Nullable url) {
-    if (url != nil) {
-      PESDKVideo *video = [[PESDKVideo alloc] initWithURL:url];
-      PESDKPhotoEditModel *photoEditModel = [weakCameraViewController photoEditModel];
-      [weakCameraViewController presentViewController:[self createVideoEditViewControllerWithVideo:video and:photoEditModel] animated:YES completion:nil];
-    }
-  };
-
-  [self presentViewController:cameraViewController animated:YES completion:nil];
-}
-
 - (PESDKVideoEditViewController *)createVideoEditViewControllerWithVideo:(PESDKVideo *)video {
   return [self createVideoEditViewControllerWithVideo:video and:[[PESDKPhotoEditModel alloc] init]];
 }
@@ -183,6 +160,29 @@
   NSURL *url = [[NSBundle mainBundle] URLForResource:@"Skater" withExtension:@"mp4"];
   PESDKVideo *video = [[PESDKVideo alloc] initWithURL:url];
   [self.navigationController pushViewController:[self createVideoEditViewControllerWithVideo:video] animated:YES];
+}
+
+- (void)presentCameraViewController {
+  PESDKConfiguration *configuration = [self buildConfiguration];
+  PESDKCameraViewController *cameraViewController = [[PESDKCameraViewController alloc] initWithConfiguration:configuration];
+  cameraViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+  cameraViewController.locationAccessRequestClosure = ^(CLLocationManager * _Nonnull locationManager) {
+    [locationManager requestWhenInUseAuthorization];
+  };
+
+  __weak PESDKCameraViewController *weakCameraViewController = cameraViewController;
+  cameraViewController.cancelBlock = ^{
+    [self dismissViewControllerAnimated:YES completion:nil];
+  };
+  cameraViewController.completionBlock = ^(UIImage * _Nullable image, NSURL * _Nullable url) {
+    if (url != nil) {
+      PESDKVideo *video = [[PESDKVideo alloc] initWithURL:url];
+      PESDKPhotoEditModel *photoEditModel = [weakCameraViewController photoEditModel];
+      [weakCameraViewController presentViewController:[self createVideoEditViewControllerWithVideo:video and:photoEditModel] animated:YES completion:nil];
+    }
+  };
+
+  [self presentViewController:cameraViewController animated:YES completion:nil];
 }
 
 #pragma mark - VideoEditViewControllerDelegate

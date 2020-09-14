@@ -41,7 +41,7 @@
 		3D03399A224BA40F00F52FD8 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../../../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		3D2BF376224BA0E700BC9956 /* SwiftExample-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "SwiftExample-Debug.xcconfig"; path = "Configuration/SwiftExample-Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3D2BF377224BA0E700BC9956 /* SwiftExample-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "SwiftExample-Release.xcconfig"; path = "Configuration/SwiftExample-Release.xcconfig"; sourceTree = SOURCE_ROOT; };
-		3D30994F2314115A00CFC46F /* Skater.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Skater.mp4; path = ../../../Samples/Skater.mp4; sourceTree = "<group>"; };
+		3D30994F2314115A00CFC46F /* Skater.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Skater.mp4; path = ../../../Assets/Skater.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

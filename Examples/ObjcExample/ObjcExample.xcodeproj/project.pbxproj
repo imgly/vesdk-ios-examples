@@ -31,7 +31,7 @@
 		2BB142A31FE9640A000EC46D /* ios_license.dms */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ios_license.dms; sourceTree = "<group>"; };
 		3D03399D224BAB0200F52FD8 /* ObjcExample-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "ObjcExample-Debug.xcconfig"; path = "Configuration/ObjcExample-Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3D03399E224BAB0200F52FD8 /* ObjcExample-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "ObjcExample-Release.xcconfig"; path = "Configuration/ObjcExample-Release.xcconfig"; sourceTree = SOURCE_ROOT; };
-		3D3099512314118300CFC46F /* Skater.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Skater.mp4; path = ../../../Samples/Skater.mp4; sourceTree = "<group>"; };
+		3D3099512314118300CFC46F /* Skater.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Skater.mp4; path = ../../../Assets/Skater.mp4; sourceTree = "<group>"; };
 		3DDFA79F224A21F600330C82 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../../../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

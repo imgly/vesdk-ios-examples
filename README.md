@@ -21,6 +21,19 @@ With an intuitive UI, an extensive filter gallery, advanced adjustment tools and
 </p>
 <p align="center">  
 
+## How to run the examples
+
+The example projects are preconfigured to use [CocoaPods](https://docs.videoeditorsdk.com/guides/ios/v10/introduction/getting_started#cocoapods) to install VideoEditor SDK. If your download contains a folder named `Pods` you can skip steps 1 and 2.
+
+1. Make sure to have CocoaPods installed, e.g., via [Homebrew](https://brew.sh):
+   ```sh
+   brew install cocoapods 
+   ```
+2. Install VideoEditor SDK for the provided Xcode workspace with:
+   ```sh
+   pod install
+   ```
+3. Open `VESDKExamples.xcworkspace` with Xcode and run the example projects
 
 ## Features
 

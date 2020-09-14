@@ -11,11 +11,11 @@ import UIKit
 import VideoEditorSDK
 
 private enum Selection: Int {
-  case camera = 0
-  case editor = 1
-  case editorWithLightTheme = 2
-  case editorWithDarkTheme = 3
-  case embeddedEditor = 4
+  case editor = 0
+  case editorWithLightTheme = 1
+  case editorWithDarkTheme = 2
+  case embeddedEditor = 3
+  case camera = 4
   case customized = 5
 }
 
@@ -25,8 +25,6 @@ class ViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.row {
-    case Selection.camera.rawValue:
-      presentCameraViewController()
     case Selection.editor.rawValue:
       presentVideoEditViewController()
     case Selection.editorWithLightTheme.rawValue:
@@ -39,6 +37,8 @@ class ViewController: UITableViewController {
       theme = ViewController.defaultTheme
     case Selection.embeddedEditor.rawValue:
       pushVideoEditViewController()
+    case Selection.camera.rawValue:
+      presentCameraViewController()
     case Selection.customized.rawValue:
       presentCustomizedCameraViewController()
     default:
@@ -133,27 +133,6 @@ class ViewController: UITableViewController {
 
   // MARK: - Presentation
 
-  private func presentCameraViewController() {
-    let configuration = buildConfiguration()
-    let cameraViewController = CameraViewController(configuration: configuration)
-    cameraViewController.modalPresentationStyle = .fullScreen
-    cameraViewController.locationAccessRequestClosure = { locationManager in
-      locationManager.requestWhenInUseAuthorization()
-    }
-    cameraViewController.cancelBlock = {
-      self.dismiss(animated: true, completion: nil)
-    }
-    cameraViewController.completionBlock = { [unowned cameraViewController] _, url in
-      if let url = url {
-        let video = Video(url: url)
-        let photoEditModel = cameraViewController.photoEditModel
-        cameraViewController.present(self.createVideoEditViewController(with: video, and: photoEditModel), animated: true, completion: nil)
-      }
-    }
-
-    present(cameraViewController, animated: true, completion: nil)
-  }
-
   private func createVideoEditViewController(with video: Video, and photoEditModel: PhotoEditModel = PhotoEditModel()) -> VideoEditViewController {
     let configuration = buildConfiguration()
 
@@ -181,6 +160,27 @@ class ViewController: UITableViewController {
 
     let video = Video(url: url)
     navigationController?.pushViewController(createVideoEditViewController(with: video), animated: true)
+  }
+
+  private func presentCameraViewController() {
+    let configuration = buildConfiguration()
+    let cameraViewController = CameraViewController(configuration: configuration)
+    cameraViewController.modalPresentationStyle = .fullScreen
+    cameraViewController.locationAccessRequestClosure = { locationManager in
+      locationManager.requestWhenInUseAuthorization()
+    }
+    cameraViewController.cancelBlock = {
+      self.dismiss(animated: true, completion: nil)
+    }
+    cameraViewController.completionBlock = { [unowned cameraViewController] _, url in
+      if let url = url {
+        let video = Video(url: url)
+        let photoEditModel = cameraViewController.photoEditModel
+        cameraViewController.present(self.createVideoEditViewController(with: video, and: photoEditModel), animated: true, completion: nil)
+      }
+    }
+
+    present(cameraViewController, animated: true, completion: nil)
   }
 
   private func presentCustomizedCameraViewController() {
