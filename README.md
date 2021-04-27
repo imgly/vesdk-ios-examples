@@ -40,7 +40,7 @@ The example projects are preconfigured to use [CocoaPods](https://docs.videoedit
 ### Adjustments
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://video.photoeditorsdk.com/assets/img/feature-adjustments.png" alt="VideoEditor SDK Adjustments"/></a>
+    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://static.photoeditorsdk.com/vesdk/feature-adjustments.png" alt="VideoEditor SDK Adjustments"/></a>
 </p>
 <p align="center">
 
@@ -49,7 +49,7 @@ The Adjustment section holds a variety of handy tools for your users to tweak an
 ### Trimming
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://video.photoeditorsdk.com/assets/img/feature-trimming.png" alt="VideoEditor SDK Trimming"/></a>
+    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://static.photoeditorsdk.com/vesdk/feature-trimming.png" alt="VideoEditor SDK Trimming"/></a>
 </p>
 <p align="center">
 
@@ -58,7 +58,7 @@ The trimming tool helps your users to keep their content relevant and get rid of
 ### Filters
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://video.photoeditorsdk.com/assets/img/feature-filters.png" alt="VideoEditor SDK Filters"/></a>
+    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://static.photoeditorsdk.com/vesdk/feature-filters.png" alt="VideoEditor SDK Filters"/></a>
 </p>
 <p align="center">
 
