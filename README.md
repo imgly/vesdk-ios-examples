@@ -1,46 +1,44 @@
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS"><img src="https://static.photoeditorsdk.com/vesdk/vesdk-logo-s.svg" alt="VideoEditor SDK Logo"/></a>
+    <a target="_blank" href="https://img.ly/video-sdk?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS"><img src="https://img.ly/static/vesdk/vesdk-logo-s.svg" alt="VideoEditor SDK Logo"/></a>
 </p>
 <p align="center">
+	<a href="https://swiftpackageindex.com/imgly/vesdk-ios-build">
+		<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fimgly%2Fvesdk-ios-build%2Fbadge%3Ftype%3Dplatforms" alt="Swift Package Manager Compatible">
+	</a>
+	<a href="https://swiftpackageindex.com/imgly/vesdk-ios-build">
+		<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fimgly%2Fvesdk-ios-build%2Fbadge%3Ftype%3Dswift-versions" alt="Swift Package Manager Compatible">
+	</a>
 	<a href="https://cocoapods.org/pods/VideoEditorSDK">
-		<img src="https://img.shields.io/cocoapods/v/VideoEditorSDK.svg" alt="CocoaPods Compatible">
+		<img src="https://img.shields.io/cocoapods/v/VideoEditorSDK.svg?label=Pod" alt="CocoaPods Compatible">
 	</a>
 	<a href="http://twitter.com/VideoEditorSDK">
-		<img src="https://img.shields.io/badge/twitter-@VideoEditorSDK-blue.svg?style=flat" alt="Twitter">
+		<img src="https://img.shields.io/badge/twitter-@VideoEditorSDK-blue.svg?label=Twitter&style=flat" alt="Twitter">
 	</a>
 </p>
 
 # Seamlessly integrate video creation into your iOS applications
 
-[VideoEditor SDK](https://videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
+[VideoEditor SDK](https://img.ly/video-sdk?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
 
 With an intuitive UI, an extensive filter gallery, advanced adjustment tools and crops for social aspect ratios you’ll empower your users to create engaging and professional looking videos in a breeze.
   
 <p align="center">
-    <a target="_blank" href="https://account.photoeditorsdk.com/pricing?product=vesdk&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://github.com/imgly/vesdk-android-demo/blob/master/CTA.png" alt="VideoEditor SDK Sign up for Beta" width="180" height="72" border="0" /></a>
+    <a target="_blank" href="https://img.ly/pricing?product=vesdk&utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://github.com/imgly/vesdk-android-demo/blob/master/CTA.png" alt="VideoEditor SDK Sign up for Beta" width="180" height="72" border="0" /></a>
 </p>
 <p align="center">  
 
 ## How to run the examples
 
-The example projects are preconfigured to use [CocoaPods](https://docs.videoeditorsdk.com/guides/ios/v10/introduction/getting_started#cocoapods) to install VideoEditor SDK. If your download contains a folder named `Pods` you can skip steps 1 and 2.
+The example projects are preconfigured to use the [Swift Package Manager](https://img.ly/docs/vesdk/guides/ios/v10/introduction/getting_started#swift-package-manager) to install VideoEditor SDK.
 
-1. Make sure to have CocoaPods installed, e.g., via [Homebrew](https://brew.sh):
-   ```sh
-   brew install cocoapods 
-   ```
-2. Install VideoEditor SDK for the provided Xcode workspace with:
-   ```sh
-   pod install
-   ```
-3. Open `VESDKExamples.xcworkspace` with Xcode and run the example projects
+To get started open `VESDKExamples.xcworkspace` with Xcode 12+ and run the example projects.
 
 ## Features
 
 ### Adjustments
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://static.photoeditorsdk.com/vesdk/feature-adjustments.png" alt="VideoEditor SDK Adjustments"/></a>
+    <a target="_blank" href="https://img.ly/video-sdk?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://img.ly/static/vesdk/feature-adjustments.png" alt="VideoEditor SDK Adjustments"/></a>
 </p>
 <p align="center">
 
@@ -49,7 +47,7 @@ The Adjustment section holds a variety of handy tools for your users to tweak an
 ### Trimming
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://static.photoeditorsdk.com/vesdk/feature-trimming.png" alt="VideoEditor SDK Trimming"/></a>
+    <a target="_blank" href="https://img.ly/video-sdk?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://img.ly/static/vesdk/feature-trimming.png" alt="VideoEditor SDK Trimming"/></a>
 </p>
 <p align="center">
 
@@ -58,7 +56,7 @@ The trimming tool helps your users to keep their content relevant and get rid of
 ### Filters
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://static.photoeditorsdk.com/vesdk/feature-filters.png" alt="VideoEditor SDK Filters"/></a>
+    <a target="_blank" href="https://img.ly/video-sdk?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples"><img src="https://img.ly/static/vesdk/feature-filters.png" alt="VideoEditor SDK Filters"/></a>
 </p>
 <p align="center">
 
@@ -80,5 +78,4 @@ A compelling message adds the final touch to any video. The VideoEditor SDK prov
 Make sure you have a commercial license before releasing your app. A commercial license is required for any app or service that has any form of monetization: This includes free apps with in-app purchases or ad supported applications. Please contact us if you want to purchase the commercial license.
 
 ## Support and License
-Use our [service desk](https://support.videoeditorsdk.com) for bug reports or support requests. To request a commercial license, please use the [license request](https://account.photoeditorsdk.com/pricing?product=vesdk&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples) form on our website.
-
+Use our [service desk](https://support.img.ly) for bug reports or support requests. To request a commercial license, please use the [license request](https://img.ly/pricing?product=vesdk&utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples) form on our website.
