@@ -10,6 +10,76 @@ private enum Selection: Int {
   case customized = 5
 }
 
+import AVFoundation
+
+// Use this subclass instead of `VideoEditViewController` or intatiate the editor with `VideoEditViewController.makeVideoEditViewController(videoAsset:)`.
+class MyVideoEditViewController: VideoEditViewController {
+  /// The trimmed duration of an `AVAsset` with applied trim model.
+  func trimmedDuration(of asset: AVAsset, with trimModel: TrimModel) -> CMTime {
+    var duration = asset.duration
+
+    if let startTime = trimModel.startTime, let endTime = trimModel.endTime, endTime <= startTime {
+      assert(startTime < endTime)
+      return .zero
+    }
+
+    if let endTime = trimModel.endTime, endTime >= .zero, endTime < duration {
+      duration = endTime
+    }
+
+    if let startTime = trimModel.startTime, startTime > .zero {
+      if duration < startTime {
+        duration = .zero
+      } else {
+        duration = CMTimeSubtract(duration, startTime)
+      }
+    }
+
+    return duration
+  }
+
+  func presentCompositionOrTrimTool() {
+    if let compositionOrTrimItem = menuViewController.menuItems.first(where: {
+      if let menuItem = $0 as? ToolMenuItem {
+        return
+          menuItem.toolControllerClass == CompositionToolController.self ||
+          menuItem.toolControllerClass == TrimToolController.self
+      }
+      return false
+    }) as? ToolMenuItem {
+      presentTool(for: compositionOrTrimItem)
+    } else {
+      preconditionFailure("No composition or trim tool menu item found. Are you using your own subclass? Then please adjust the code above.")
+    }
+  }
+
+  override func renderHighResolutionVariant() {
+    guard let asset = (mediaEditPreviewController as? VideoEditPreviewController)?.video.asset else {
+      return
+    }
+
+    let duration = trimmedDuration(of: asset, with: photoEditModel.trimModel).seconds
+    let minDuration = 5.0
+    let maxDuration = 60.0
+
+    if duration < minDuration || duration > maxDuration {
+      let alert = UIAlertController(title: "Invalid video duration", message: "The edited video must not be shorter than \(minDuration) or longer than \(maxDuration) seconds!", preferredStyle: .alert)
+      let action = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+        self?.presentCompositionOrTrimTool()
+      }
+      alert.addAction(action)
+      self.present(alert, animated: true)
+    } else {
+      // You could also change `photoEditModel.trimModel` to enforce a specific video duration before exporting the video with
+      // `super.renderHighResolutionVariant()`.
+      // Alternatively, you could also set the `trimModel` to your needs before presenting the video editor and override
+      // `TrimToolController.apply(_:)` and/or `CompositionToolController.apply(_:)` to prevent users from applying invalid durations
+      // the same way as done in this example for overriding `renderHighResolutionVariant()`.
+      super.renderHighResolutionVariant()
+    }
+  }
+}
+
 class ViewController: UITableViewController {
 
   // MARK: - UITableViewDelegate
@@ -90,6 +160,9 @@ class ViewController: UITableViewController {
   }()
 
   private func buildConfiguration() -> Configuration {
+
+    try? IMGLY.replaceClass(VideoEditViewController.self, with: MyVideoEditViewController.self)
+
     let configuration = Configuration { builder in
       // Configure camera
       builder.configureCameraViewController { options in
@@ -102,7 +175,7 @@ class ViewController: UITableViewController {
       // Configure editor
       builder.configureVideoEditViewController { options in
         var menuItems = PhotoEditMenuItem.defaultItems
-        menuItems.swapAt(0, 1) // Swap first two tools
+//        menuItems.swapAt(0, 1) // Swap first two tools
 
         options.menuItems = menuItems
       }
@@ -128,7 +201,7 @@ class ViewController: UITableViewController {
     let configuration = buildConfiguration()
 
     // Create a video edit view controller
-    let videoEditViewController = VideoEditViewController(videoAsset: video, configuration: configuration, photoEditModel: photoEditModel)
+    let videoEditViewController = MyVideoEditViewController(videoAsset: video, configuration: configuration, photoEditModel: photoEditModel)
     videoEditViewController.modalPresentationStyle = .fullScreen
     videoEditViewController.delegate = self
 
