@@ -142,13 +142,13 @@
 }
 
 - (void)presentVideoEditViewController {
-  NSURL *url = [[NSBundle mainBundle] URLForResource:@"Skater" withExtension:@"mp4"];
+  NSURL *url = [NSBundle.mainBundle URLForResource:@"Skater" withExtension:@"mp4"];
   PESDKVideo *video = [[PESDKVideo alloc] initWithURL:url];
   [self presentViewController:[self createVideoEditViewControllerWithVideo:video] animated:YES completion:nil];
 }
 
 - (void)pushVideoEditViewController {
-  NSURL *url = [[NSBundle mainBundle] URLForResource:@"Skater" withExtension:@"mp4"];
+  NSURL *url = [NSBundle.mainBundle URLForResource:@"Skater" withExtension:@"mp4"];
   PESDKVideo *video = [[PESDKVideo alloc] initWithURL:url];
   [self.navigationController pushViewController:[self createVideoEditViewControllerWithVideo:video] animated:YES];
 }
