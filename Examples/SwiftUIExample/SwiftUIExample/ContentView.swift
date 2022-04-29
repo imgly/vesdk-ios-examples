@@ -38,7 +38,8 @@ struct ContentView: View {
             photoEditModel = nil
             selectedVideo = nil
           }
-          .onDidFail {
+          .onDidFail { error in
+            print("Editor finished with error: \(error.localizedDescription)")
             vesdkPresented = false
             photoEditModel = nil
             selectedVideo = nil
@@ -60,7 +61,7 @@ struct ContentView: View {
             if let url = result.url {
               selectedVideo = Video(url: url)
             }
-            self.photoEditModel = result.photoEditModel
+            self.photoEditModel = result.model
             cameraPresented = false
           }
           .ignoresSafeArea()

@@ -17,16 +17,8 @@
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
-  if (@available(iOS 13.0, *)) {
-    theme = PESDKTheme.dynamic;
-  } else {
-    theme = PESDKTheme.dark;
-  }
-
-  PESDKTemperatureFormat unit = PESDKTemperatureFormatCelsius;
-  if (@available(iOS 10.0, *)) {
-    unit = PESDKTemperatureFormatLocale;
-  }
+  theme = PESDKTheme.dynamic;
+  PESDKTemperatureFormat unit = PESDKTemperatureFormatLocale;
   weatherProvider = [[PESDKOpenWeatherProvider alloc] initWithApiKey:nil unit:unit];
   weatherProvider.locationAccessRequestClosure = ^(CLLocationManager * _Nonnull locationManager) {
     [locationManager requestWhenInUseAuthorization];
@@ -41,19 +33,11 @@
   } else if (indexPath.row == 1) {
     theme = PESDKTheme.light;
     [self presentVideoEditViewController];
-    if (@available(iOS 13.0, *)) {
-      theme = PESDKTheme.dynamic;
-    } else {
-      theme = PESDKTheme.dark;
-    }
+    theme = PESDKTheme.dynamic;
   } else if (indexPath.row == 2) {
     theme = PESDKTheme.dark;
     [self presentVideoEditViewController];
-    if (@available(iOS 13.0, *)) {
-      theme = PESDKTheme.dynamic;
-    } else {
-      theme = PESDKTheme.dark;
-    }
+    theme = PESDKTheme.dynamic;
   } else if (indexPath.row == 3) {
     [self pushVideoEditViewController];
   } else if (indexPath.row == 4) {
@@ -85,9 +69,7 @@
   // to fix the layout.
   //
   // For reference see: https://forums.developer.apple.com/thread/121861#378841
-  if (@available(iOS 13.0, *)) {
-    [self.navigationController.view setNeedsLayout];
-  }
+  [self.navigationController.view setNeedsLayout];
 }
 
 #pragma mark - Configuration
@@ -104,7 +86,7 @@
 
     // Configure editor
     [builder configureVideoEditViewController:^(PESDKVideoEditViewControllerOptionsBuilder * _Nonnull options) {
-      NSMutableArray<PESDKPhotoEditMenuItem *> *menuItems = [[PESDKPhotoEditMenuItem defaultItems] mutableCopy];
+      NSMutableArray<PESDKPhotoEditMenuItem *> *menuItems = [PESDKPhotoEditMenuItem.defaultItems mutableCopy];
       [menuItems exchangeObjectAtIndex:0 withObjectAtIndex:1]; // Swap first two tools
       options.menuItems = menuItems;
     }];
@@ -165,9 +147,9 @@
   cameraViewController.cancelBlock = ^{
     [self dismissViewControllerAnimated:YES completion:nil];
   };
-  cameraViewController.completionBlock = ^(UIImage * _Nullable image, NSURL * _Nullable url) {
-    if (url != nil) {
-      PESDKVideo *video = [[PESDKVideo alloc] initWithURL:url];
+  cameraViewController.completionBlock = ^(PESDKCameraResult * _Nonnull result) {
+    if (result.url != nil) {
+      PESDKVideo *video = [[PESDKVideo alloc] initWithURL:result.url];
       PESDKPhotoEditModel *photoEditModel = [weakCameraViewController photoEditModel];
       [weakCameraViewController presentViewController:[self createVideoEditViewControllerWithVideo:video and:photoEditModel] animated:YES completion:nil];
     }
@@ -178,7 +160,12 @@
 
 #pragma mark - VideoEditViewControllerDelegate
 
-- (void)videoEditViewController:(PESDKVideoEditViewController *)videoEditViewController didFinishWithVideoAtURL:(NSURL *)url {
+- (BOOL)videoEditViewControllerShouldStart:(PESDKVideoEditViewController * _Nonnull)videoEditViewController task:(PESDKVideoEditorTask * _Nonnull)task {
+  // Implementing this method is optional. You can perform additional validation and interrupt the process by returning `NO`.
+  return YES;
+}
+
+ - (void)videoEditViewControllerDidFinish:(PESDKVideoEditViewController * _Nonnull)videoEditViewController result:(PESDKVideoEditorResult * _Nonnull)result {
   if (videoEditViewController.navigationController != nil) {
     [videoEditViewController.navigationController popViewControllerAnimated:YES];
   } else {
@@ -186,7 +173,7 @@
   }
 }
 
-- (void)videoEditViewControllerDidFailToGenerateVideo:(PESDKVideoEditViewController *)videoEditViewController {
+- (void)videoEditViewControllerDidFail:(PESDKVideoEditViewController * _Nonnull)videoEditViewController error:(PESDKVideoEditorError * _Nonnull)error {
   if (videoEditViewController.navigationController != nil) {
     [videoEditViewController.navigationController popViewControllerAnimated:YES];
   } else {
@@ -194,7 +181,7 @@
   }
 }
 
-- (void)videoEditViewControllerDidCancel:(PESDKVideoEditViewController *)videoEditViewController {
+- (void)videoEditViewControllerDidCancel:(PESDKVideoEditViewController * _Nonnull)videoEditViewController {
   if (videoEditViewController.navigationController != nil) {
     [videoEditViewController.navigationController popViewControllerAnimated:YES];
   } else {

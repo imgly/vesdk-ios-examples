@@ -40,7 +40,7 @@ class ViewController: UITableViewController {
   override var prefersStatusBarHidden: Bool {
     // Before changing `prefersStatusBarHidden` please read the comment below
     // in `viewDidAppear`.
-    return true
+    true
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -61,27 +61,16 @@ class ViewController: UITableViewController {
     // to fix the layout.
     //
     // For reference see: https://forums.developer.apple.com/thread/121861#378841
-    if #available(iOS 13.0, *) {
-      navigationController?.view.setNeedsLayout()
-    }
+    navigationController?.view.setNeedsLayout()
   }
 
   // MARK: - Configuration
 
-  private static let defaultTheme: Theme = {
-    if #available(iOS 13.0, *) {
-      return .dynamic
-    } else {
-      return .dark
-    }
-  }()
+  private static let defaultTheme: Theme = .dynamic
 
   private var theme = defaultTheme
   private var weatherProvider: OpenWeatherProvider = {
-    var unit = TemperatureFormat.celsius
-    if #available(iOS 10.0, *) {
-      unit = .locale
-    }
+    let unit = TemperatureFormat.locale
     let weatherProvider = OpenWeatherProvider(apiKey: nil, unit: unit)
     weatherProvider.locationAccessRequestClosure = { locationManager in
       locationManager.requestWhenInUseAuthorization()
@@ -136,18 +125,14 @@ class ViewController: UITableViewController {
   }
 
   private func presentVideoEditViewController() {
-    guard let url = Bundle.main.url(forResource: "Skater", withExtension: "mp4") else {
-      return
-    }
+    guard let url = Bundle.main.url(forResource: "Skater", withExtension: "mp4") else { return }
 
     let video = Video(url: url)
     present(createVideoEditViewController(with: video), animated: true, completion: nil)
   }
 
   private func pushVideoEditViewController() {
-    guard let url = Bundle.main.url(forResource: "Skater", withExtension: "mp4") else {
-      return
-    }
+    guard let url = Bundle.main.url(forResource: "Skater", withExtension: "mp4") else { return }
 
     let video = Video(url: url)
     navigationController?.pushViewController(createVideoEditViewController(with: video), animated: true)
@@ -163,11 +148,10 @@ class ViewController: UITableViewController {
     cameraViewController.cancelBlock = {
       self.dismiss(animated: true, completion: nil)
     }
-    cameraViewController.completionBlock = { [unowned cameraViewController] _, url in
-      if let url = url {
+    cameraViewController.completionBlock = { [unowned cameraViewController] result in
+      if let url = result.url {
         let video = Video(url: url)
-        let photoEditModel = cameraViewController.photoEditModel
-        cameraViewController.present(self.createVideoEditViewController(with: video, and: photoEditModel), animated: true, completion: nil)
+        cameraViewController.present(self.createVideoEditViewController(with: video, and: result.model), animated: true, completion: nil)
       }
     }
 
@@ -182,7 +166,7 @@ class ViewController: UITableViewController {
 
       self.customizeCameraController(builder)
       self.customizeVideoEditorViewController(builder)
-      self.customizeTextTool()
+      self.customizeTextTool(builder)
     }
 
     let cameraViewController = CameraViewController(configuration: configuration)
@@ -196,11 +180,10 @@ class ViewController: UITableViewController {
       window.tintColor = redColor
     }
 
-    cameraViewController.completionBlock = { [unowned cameraViewController] _, url in
-      if let url = url {
+    cameraViewController.completionBlock = { [unowned cameraViewController] result in
+      if let url = result.url {
         let video = Video(url: url)
-        let photoEditModel = cameraViewController.photoEditModel
-        cameraViewController.present(self.createCustomizedVideoEditViewController(with: video, configuration: configuration, and: photoEditModel), animated: true, completion: nil)
+        cameraViewController.present(self.createCustomizedVideoEditViewController(with: video, configuration: configuration, and: result.model), animated: true, completion: nil)
       }
     }
 
@@ -223,7 +206,7 @@ class ViewController: UITableViewController {
   fileprivate let redColor = UIColor(red: 0.988, green: 0.173, blue: 0.357, alpha: 1)
   fileprivate let blueColor = UIColor(red: 0.243, green: 0.769, blue: 0.831, alpha: 1)
 
-  fileprivate func customizeTextTool() {
+  fileprivate func customizeTextTool(_ builder: ConfigurationBuilder) {
     let fonts = [
       Font(displayName: "Arial", fontName: "ArialMT", identifier: "Arial"),
       Font(displayName: "Helvetica", fontName: "Helvetica", identifier: "Helvetica"),
@@ -233,7 +216,7 @@ class ViewController: UITableViewController {
       Font(displayName: "Noteworthy", fontName: "Noteworthy-Bold", identifier: "Notewortyh")
     ]
 
-    FontImporter.all = fonts
+    builder.assetCatalog.fonts = fonts
   }
 
   fileprivate func customizeCameraController(_ builder: ConfigurationBuilder) {
@@ -283,7 +266,11 @@ class ViewController: UITableViewController {
 }
 
 extension ViewController: VideoEditViewControllerDelegate {
-  func videoEditViewController(_ videoEditViewController: VideoEditViewController, didFinishWithVideoAt url: URL?) {
+  func videoEditViewControllerShouldStart(_ videoEditViewController: VideoEditViewController, task: VideoEditorTask) -> Bool {
+    true
+  }
+
+  func videoEditViewControllerDidFinish(_ videoEditViewController: VideoEditViewController, result: VideoEditorResult) {
     if let navigationController = videoEditViewController.navigationController {
       navigationController.popViewController(animated: true)
     } else {
@@ -291,7 +278,7 @@ extension ViewController: VideoEditViewControllerDelegate {
     }
   }
 
-  func videoEditViewControllerDidFailToGenerateVideo(_ videoEditViewController: VideoEditViewController) {
+  func videoEditViewControllerDidFail(_ videoEditViewController: VideoEditViewController, error: VideoEditorError) {
     if let navigationController = videoEditViewController.navigationController {
       navigationController.popViewController(animated: true)
     } else {
