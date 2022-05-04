@@ -29,7 +29,7 @@ With an intuitive UI, an extensive filter gallery, advanced adjustment tools and
 
 ## How to run the examples
 
-The example projects are preconfigured to use the [Swift Package Manager](https://img.ly/docs/vesdk/guides/ios/v10/introduction/getting_started#swift-package-manager) to install VideoEditor SDK.
+The example projects are preconfigured to use the [Swift Package Manager](https://img.ly/docs/vesdk/ios/introduction/getting_started/#swift-package-manager) to install VideoEditor SDK.
 
 To get started open `VESDKExamples.xcworkspace` with Xcode 12+ and run the example projects.
 
