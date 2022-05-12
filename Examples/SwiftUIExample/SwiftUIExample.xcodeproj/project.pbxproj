@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		FC1EFABD26EF70EC00A4A3D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1EFABC26EF70EC00A4A3D2 /* Assets.xcassets */; };
 		FC1EFAC026EF70EC00A4A3D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1EFABF26EF70EC00A4A3D2 /* Preview Assets.xcassets */; };
 		FC5C26E9279700320088BAD0 /* Skater.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FC7C1B9226F08DF30024D391 /* Skater.mp4 */; };
-		FC7C1B9126F08DDD0024D391 /* VideoEditorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FC7C1B9026F08DDD0024D391 /* VideoEditorSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC7C1B9126F08DDD0024D391 /* VideoEditorSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +89,6 @@
 			);
 			name = SwiftUIExample;
 			packageProductDependencies = (
-				FC7C1B9026F08DDD0024D391 /* VideoEditorSDK */,
 			);
 			productName = SwiftUIExample;
 			productReference = FC1EFAB526EF70EA00A4A3D2 /* SwiftUIExample.app */;
@@ -121,7 +118,6 @@
 			);
 			mainGroup = FC1EFAAC26EF70EA00A4A3D2;
 			packageReferences = (
-				FC7C1B8F26F08DDD0024D391 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */,
 			);
 			productRefGroup = FC1EFAB626EF70EA00A4A3D2 /* Products */;
 			projectDirPath = "";
@@ -344,25 +340,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FC7C1B8F26F08DDD0024D391 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/imgly/vesdk-ios-build";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FC7C1B9026F08DDD0024D391 /* VideoEditorSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC7C1B8F26F08DDD0024D391 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */;
-			productName = VideoEditorSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC1EFAAD26EF70EA00A4A3D2 /* Project object */;
 }

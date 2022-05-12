@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,6 @@
 		2B4792B91E02E67F00BBB8D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B4792B71E02E67F00BBB8D9 /* LaunchScreen.storyboard */; };
 		2BB142A41FE9640A000EC46D /* ios_license.dms in Resources */ = {isa = PBXBuildFile; fileRef = 2BB142A31FE9640A000EC46D /* ios_license.dms */; };
 		3D3099522314118300CFC46F /* Skater.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3D3099512314118300CFC46F /* Skater.mp4 */; };
-		4A80F761268DBAEF00ECBD34 /* VideoEditorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4A80F760268DBAEF00ECBD34 /* VideoEditorSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A80F761268DBAEF00ECBD34 /* VideoEditorSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +106,6 @@
 			);
 			name = ObjcExample;
 			packageProductDependencies = (
-				4A80F760268DBAEF00ECBD34 /* VideoEditorSDK */,
 			);
 			productName = ObjcExample;
 			productReference = 2B4792A61E02E67F00BBB8D9 /* ObjcExample.app */;
@@ -139,7 +136,6 @@
 			);
 			mainGroup = 2B47929D1E02E67E00BBB8D9;
 			packageReferences = (
-				4A80F75F268DBAEF00ECBD34 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */,
 			);
 			productRefGroup = 2B4792A71E02E67F00BBB8D9 /* Products */;
 			projectDirPath = "";
@@ -317,10 +313,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ObjcExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ly.img.VideoEditorSDK.ObjC.${PRODUCT_NAME}${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -333,10 +326,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ObjcExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ly.img.VideoEditorSDK.ObjC.${PRODUCT_NAME}${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -364,25 +354,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		4A80F75F268DBAEF00ECBD34 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/imgly/vesdk-ios-build";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4A80F760268DBAEF00ECBD34 /* VideoEditorSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4A80F75F268DBAEF00ECBD34 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */;
-			productName = VideoEditorSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2B47929E1E02E67E00BBB8D9 /* Project object */;
 }
