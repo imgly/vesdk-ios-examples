@@ -16,6 +16,8 @@
 	</a>
 </p>
 
+**You can find our latest examples at https://github.com/imgly/catalog-ios.**
+
 # Seamlessly integrate video creation into your iOS applications
 
 [VideoEditor SDK](https://img.ly/video-sdk?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=iOS&utm_term=Examples) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
